@@ -1,0 +1,15 @@
+.boxUser {
+  flex-direction: column;
+  text-align: center;
+  margin: 10px;
+  width: 240px;
+  height: 280px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid;
+}
+
+img {
+  width: 140px;
+  height: 150px;
+}
