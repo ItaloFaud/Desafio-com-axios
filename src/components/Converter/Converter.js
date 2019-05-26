@@ -4,19 +4,29 @@ export default class Converter extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Conversor de Moedas</h1>
+        
         <input className="btn" onChange={this.props.handle} />
-        <h6>
-          {/* {this.props.cods.map((cod) => {
-            return(`O valor $ ${this.props.valor} em ${this.props.cotacoes[cod].name} equivale a R$ ${this.props.cotacoes[cod].ask * this.props.valor}`)
-          })} */}
-        </h6>
+        
+        {this.props.valor === 0 ? "Sem valores ainda" : this.props.cods.map((cod) => {
+          let cota = this.props.cotacoes[cod].ask * this.props.valor;
+          
+        return(<div><h6>O valor {this.props.valor} em {this.props.cotacoes[cod].name}, vale em Reais {cota} </h6><br></br></div>)
+        }) }
+        
       </div>
+
+      //`O valor ${this.props.valor} em ${this.props.cotacoes[cod].name}, vale em Reais ${this.props.cotacoes[cod].high * this.props.valor}  
+
+
       // this.props.state.cotacoes.map((cod,valores) => {
       //   return `${cod}`
       // })
 
       // {this.props.valor === 0 ? `Informe um valor`: }
+
+      /* {this.props.cods.map((cod) => {
+            return(`O valor $ ${this.props.valor} em ${this.props.cotacoes[cod].name} equivale a R$ ${this.props.cotacoes[cod].ask * this.props.valor}`)
+          })} */
     );
   }
 }
