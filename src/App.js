@@ -13,19 +13,23 @@ class App extends Component {
 
   componentDidMount() {
     
-    
-      axios.get(`https://economia.awesomeapi.com.br/${this.state.cods[0]}-BRL`).then(data => {
+      this.state.cods.map((cod) => {
+        axios.get(`https://economia.awesomeapi.com.br/${cod}-BRL`).then(data => {
         let cotacoes = data.data[0];
         //this.setState({cotacoes:[...this.state.cotacoes, cotacoes]});
         this.state.cotacoes.push(cotacoes);
      //   console.log(this.state.cotacoes);
       //  console.log(this.state.cotacoes[this.state.cods[0]].name);
   
-      return(
-        console.log(this.state.cotacoes)
-        )
+      
   
       });
+      
+        
+        
+      });
+      console.log(this.state.cotacoes)
+      
         
       
     
@@ -46,7 +50,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Conversor de Moedas</h1>
-      <Converter valor={this.state.valor} cods={this.state.cods} cotacoes={this.state.cotacoes} handle={this.handleChange}></Converter>
+      <Converter valor={this.state.valor} cotacoes={this.state.cotacoes} handle={this.handleChange}></Converter>
       </div>
     );
   }

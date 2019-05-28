@@ -7,7 +7,12 @@ export default class Converter extends Component {
         
         <input className="btn" onChange={this.props.handle} />
         
-        {this.props.valor === 0 ? "Sem valores ainda" : <div><h6>O valor {this.props.valor} em {this.props.cotacoes[0].name} {this.props.cotacoes[0].ask}, vale em Reais {this.props.cotacoes[0].ask*this.props.valor} </h6><br></br></div>
+        {this.props.valor === 0 ? "Sem valores ainda" : this.props.cotacoes.map((cotacao) => {
+          return(
+            <div><h6>O valor {this.props.valor} em {cotacao.name} ({cotacao.ask}), vale em Reais {(cotacao.ask*this.props.valor).toFixed(2)} </h6><br></br></div>
+          )
+        })
+        
         }
         
       </div>
