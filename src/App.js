@@ -12,19 +12,25 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get("https://economia.awesomeapi.com.br/all").then(data => {
-      let cotacoes = data.data;
-      this.setState({cotacoes});
-   //   console.log(this.state.cotacoes);
-    //  console.log(this.state.cotacoes[this.state.cods[0]].name);
-
-      this.state.cods.map((cod) => {
-        return(
-        console.log(cod+" - "+this.state.cotacoes[cod].code)
+    
+    
+      axios.get(`https://economia.awesomeapi.com.br/${this.state.cods[0]}-BRL`).then(data => {
+        let cotacoes = data.data[0];
+        //this.setState({cotacoes:[...this.state.cotacoes, cotacoes]});
+        this.state.cotacoes.push(cotacoes);
+     //   console.log(this.state.cotacoes);
+      //  console.log(this.state.cotacoes[this.state.cods[0]].name);
+  
+      return(
+        console.log(this.state.cotacoes)
         )
-      })
+  
+      });
+        
+      
+    
 
-    });
+    console.log(this.state.cotacoes);
   }
 
   handleChange = event => {
